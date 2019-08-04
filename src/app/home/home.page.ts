@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  salaryValue:number;
 
+  constructor(private storage:Storage) {}
+
+  saveSalary() {
+    this.storage.set('salary', this.salaryValue).then(() => {
+      alert("GUARDADO");
+    })
+    
+  }
 }
