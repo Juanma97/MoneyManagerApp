@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
-  constructor() { }
+  salary:number;
+
+  constructor(private storage:Storage, private cdRef:ChangeDetectorRef) { console.log("Constructor") }
 
   ngOnInit() {
+    console.log("ngOnInit");
+    this.storage.get('salary').then((val) => {
+      console.log(this.salary);
+      this.salary = val;
+      console.log(this.salary);
+      this.cdRef.detectChanges();
+    });
   }
-
 }

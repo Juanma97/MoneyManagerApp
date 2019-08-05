@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,11 @@ export class HomePage {
 
   salaryValue:number;
 
-  constructor(private storage:Storage) {}
+  constructor(private storage:Storage, private router: Router) {}
 
   saveSalary() {
     this.storage.set('salary', this.salaryValue).then(() => {
-      alert("GUARDADO");
+      this.router.navigateByUrl('/dashboard');
     })
     
   }
