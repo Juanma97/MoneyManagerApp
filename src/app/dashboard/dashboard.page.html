@@ -1,10 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>dashboard</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <h2>dashboard</h2>
-  <p>{{salary}}</p>
+  <div class="tab-salary">
+    <p>Tu sueldo: {{salary}}</p>
+  </div>
+  <div class="main-content">
+    <div class=slider-content>
+      <button ion-button icon-only class="btn-slider" (click)="prev()"><ion-icon name="arrow-back"></ion-icon></button>
+      <ion-slides class="slider" #slides>
+        <ion-slide>Tus gastos hoy</ion-slide>
+        <ion-slide>Tus gastos este mes</ion-slide>
+        <ion-slide>Tus gastos este año</ion-slide>
+      </ion-slides>
+      <button ion-button icon-only class="btn-slider" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
+    </div>
+  </div>
+  
 </ion-content>

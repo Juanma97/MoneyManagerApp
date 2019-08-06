@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.tab-salary{
+  width: 100%;
+  height: 56px;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content{
+  width: 100%;
+  height: 100vh;
+}
+.slider-content{
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 100%;
+
+  ion-button{
+    height: 100%;
+    background: transparent;
+  }
+}
+
+ion-icon{
+  font-size: 28px;
+}
+.btn-slider{
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid black;
+}
+
+.slider{
+  width: 100%;
+  height: 56px;
+  border-bottom: 1px solid black;
+}

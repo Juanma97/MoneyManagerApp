@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +9,26 @@ import { Storage } from '@ionic/storage';
 })
 export class DashboardPage implements OnInit {
 
+  @ViewChild('slides', {static: false}) slides: IonSlides;
   salary:number;
 
-  constructor(private storage:Storage, private cdRef:ChangeDetectorRef) { console.log("Constructor") }
+  constructor(private storage:Storage, private cdRef:ChangeDetectorRef) { }
 
   ngOnInit() {
     console.log("ngOnInit");
     this.storage.get('salary').then((val) => {
-      console.log(this.salary);
       this.salary = val;
-      console.log(this.salary);
       this.cdRef.detectChanges();
     });
+  }
+
+  prev() {
+    this.slides.slidePrev();
+    console.log("prev")
+  }
+
+  next() {
+    this.slides.slideNext();
+    console.log("next")
   }
 }
