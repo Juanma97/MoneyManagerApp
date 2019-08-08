@@ -13,7 +13,7 @@
 }
 .main-content{
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 112px);
 }
 .slider-content{
   display: grid;
@@ -34,9 +34,12 @@ ion-icon{
   box-shadow: none;
   border-bottom: 1px solid black;
 }
-
 .slider{
   width: 100%;
   height: 56px;
   border-bottom: 1px solid black;
+}
+
+.fab{
+  margin: 8px; 
 }

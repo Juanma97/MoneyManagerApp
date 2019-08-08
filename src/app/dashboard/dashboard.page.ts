@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,10 +13,9 @@ export class DashboardPage implements OnInit {
   @ViewChild('slides', {static: false}) slides: IonSlides;
   salary:number;
 
-  constructor(private storage:Storage, private cdRef:ChangeDetectorRef) { }
+  constructor(private storage:Storage, private cdRef:ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
-    console.log("ngOnInit");
     this.storage.get('salary').then((val) => {
       this.salary = val;
       this.cdRef.detectChanges();
@@ -30,5 +30,9 @@ export class DashboardPage implements OnInit {
   next() {
     this.slides.slideNext();
     console.log("next")
+  }
+
+  goToExpenseForm() {
+    this.router.navigateByUrl('/expense-form');
   }
 }

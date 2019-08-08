@@ -13,5 +13,9 @@
       <button ion-button icon-only class="btn-slider" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
     </div>
   </div>
-  
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="goToExpenseForm()">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
