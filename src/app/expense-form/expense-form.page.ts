@@ -11,7 +11,7 @@ import * as moment from 'moment';
   templateUrl: './expense-form.page.html',
   styleUrls: ['./expense-form.page.scss'],
 })
-export class ExpenseFormPage implements OnInit {
+export class ExpenseFormPage {
 
   title:string = "";
   nameExpense:string = "";

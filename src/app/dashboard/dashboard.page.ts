@@ -16,6 +16,7 @@ export class DashboardPage implements OnInit {
   @ViewChild('slides', {static: false}) slides: IonSlides;
   salary:number;
   expenses:any[] = [];
+  allExpenses:any[] = [];
   categories:any = null;
   indexSlide:number = 0;
 
@@ -32,18 +33,39 @@ export class DashboardPage implements OnInit {
 
   ionViewWillEnter() {
     this.storage.get("expensesSaved").then((val) => {
-      this.getTodayExpenses(val);
-      console.log(this.expenses)
+      this.allExpenses = val;
+      this.getTodayExpenses();
     });
   }
 
-  getTodayExpenses(val){
+  getTodayExpenses(){
     this.expenses = [];
     var nowDate = moment().format("DD/MM/YYYY").split("/")
-    for(let value of val){
+    for(let value of this.allExpenses){
       if(value.day == parseInt(nowDate[0]) 
       && value.month == this.getMonth(parseInt(nowDate[1]))
       && value.year == parseInt(nowDate[2])){
+        this.expenses.push(value);
+      }
+    }
+  }
+
+  getMonthExpenses(){
+    this.expenses = [];
+    var nowDate = moment().format("DD/MM/YYYY").split("/")
+    for(let value of this.allExpenses){
+      if(value.month == this.getMonth(parseInt(nowDate[1]))
+      && value.year == parseInt(nowDate[2])){
+        this.expenses.push(value);
+      }
+    }
+  }
+
+  getYearExpenses(){
+    this.expenses = [];
+    var nowDate = moment().format("DD/MM/YYYY").split("/")
+    for(let value of this.allExpenses){
+      if(value.year == parseInt(nowDate[2])){
         this.expenses.push(value);
       }
     }
@@ -92,16 +114,34 @@ export class DashboardPage implements OnInit {
   prev() {
     this.slides.slidePrev();
     this.slides.getActiveIndex().then((val) => {
-      console.log("Index: ", val);
-      this.indexSlide = val;
+      switch(val){
+        case 0: 
+          this.getTodayExpenses();
+          break;
+        case 1:
+          this.getMonthExpenses();
+          break;
+        case 2:
+          this.getYearExpenses();
+          break;
+      }
     })
   }
 
   next() {
     this.slides.slideNext();
     this.slides.getActiveIndex().then((val) => {
-      console.log("Index: ", val);
-      this.indexSlide = val;
+      switch(val){
+        case 0: 
+          this.getTodayExpenses();
+          break;
+        case 1:
+          this.getMonthExpenses();
+          break;
+        case 2:
+          this.getYearExpenses();
+          break;
+      }
     })
   }
 
