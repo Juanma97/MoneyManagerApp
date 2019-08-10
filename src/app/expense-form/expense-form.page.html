@@ -1,5 +1,31 @@
 <ion-content>
-<ion-fab vertical="top" horizontal="start">
-    <ion-icon name="close" size="large"></ion-icon>
-</ion-fab>
+  <ion-fab vertical="top" horizontal="start" (click)="closeForm()">
+      <ion-icon name="close" size="large"></ion-icon>
+  </ion-fab>
+
+  <div class="content-form">
+    <div>
+      <h6>{{title}}</h6>
+    </div>
+    <div class="form">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input autofocus clearInput [(ngModel)]="nameExpense"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Expense</ion-label>
+        <ion-input clearInput [(ngModel)]="valueExpense"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category</ion-label>
+        <ion-select interface="action-sheet">
+          <ion-select-option>Option 1</ion-select-option>
+          <ion-select-option>Option 2</ion-select-option>
+          <ion-select-option>Option 3</ion-select-option>
+          <ion-select-option>Option 4</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button (click)="saveExpense()">Guardar gasto</ion-button>
+    </div>
+  </div>
 </ion-content>

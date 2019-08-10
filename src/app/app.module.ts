@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { ExpensesService } from './expenses.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ driverOrder: ['indexeddb', 'sqlite', 'websql']
   providers: [
     StatusBar,
     SplashScreen,
+    ExpensesService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
