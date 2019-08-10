@@ -12,6 +12,21 @@
       </ion-slides>
       <button ion-button icon-only class="btn-slider" (click)="next()"><ion-icon name="arrow-forward"></ion-icon></button>
     </div>
+    <div class="expenses">
+      <div class="titles-expenses">
+        <div class="title">Name</div>
+        <div class="title">Category</div>
+        <div class="title">Expense</div>
+      </div>
+      <div *ngFor="let expense of expenses">
+        <div class="expense">
+          <div class="inner-expense">{{expense.name}}</div>
+          <div class="inner-expense">{{expense.category}}</div>
+          <div class="inner-expense">{{expense.value}} €</div>
+        </div>
+        <div class="separator"></div>
+      </div>
+    </div>
   </div>
   <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button (click)="goToExpenseForm()">

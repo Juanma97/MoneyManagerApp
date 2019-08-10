@@ -13,6 +13,7 @@ export class DashboardPage implements OnInit {
 
   @ViewChild('slides', {static: false}) slides: IonSlides;
   salary:number;
+  expenses:any = null;
 
   constructor(private storage:Storage, private cdRef:ChangeDetectorRef, private router: Router,
               public expenseService:ExpensesService) { }
@@ -28,18 +29,17 @@ export class DashboardPage implements OnInit {
   ionViewWillEnter() {
     console.log("Will Enter");
     this.storage.get("expensesSaved").then((val) => {
-      console.log(val);
+      this.expenses = val;
+      console.log(this.expenses)
     });
   }
 
   prev() {
     this.slides.slidePrev();
-    console.log("prev")
   }
 
   next() {
     this.slides.slideNext();
-    console.log("next")
   }
 
   goToExpenseForm() {

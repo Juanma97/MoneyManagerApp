@@ -43,3 +43,30 @@ ion-icon{
 .fab{
   margin: 8px; 
 }
+
+.titles-expenses{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.title{
+  text-align: center;
+  padding: 8px;
+}
+
+.expense{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  padding: 4px;
+}
+
+.inner-expense{
+  text-align: center;
+  padding: 8px;
+}
+
+.separator{
+  width: 100%;
+  height: 2px;
+  background: gray;
+}
