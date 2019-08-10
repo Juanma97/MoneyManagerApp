@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExpensesService } from '../expenses.service';
+import { CategoryService } from '../category.service';
+import { Storage } from '@ionic/storage';
 
 import * as moment from 'moment';
 
@@ -14,14 +16,19 @@ export class ExpenseFormPage implements OnInit {
   title:string = "";
   nameExpense:string = "";
   valueExpense:number = 0;
+  categoryValue:any = null;
+  categories:any = ['Compra', 'Comida', 'Transporte', 'Hogar', 'Ropa', 'Ahorro', 'Inversiones', 'Otros'];
 
-  constructor(private router:Router, public expenseService:ExpensesService) {
+  constructor(private router:Router, public expenseService:ExpensesService, public categoryService:CategoryService,
+              private storage:Storage) {
     var date = moment().format("DD/MM/YYYY").split("/")
     this.title = "Gasto del día " + date[0] + " de " + this.getMonth(parseInt(date[1])) + " del " + date[2];
   }
 
-  ngOnInit() {
+  addNewCategory(){
+    console.log("Add new category");
   }
+
  /** TODO: Change to array of months and return the position - 1 */
   getMonth(month) {
     switch(month){
@@ -68,13 +75,15 @@ export class ExpenseFormPage implements OnInit {
   }
 
   saveExpense() {
+    var nowDate = moment().format("DD/MM/YYYY").split("/")
     console.log("Save expense");
     var expense = {
       name: this.nameExpense,
       value: this.valueExpense,
-      category: "testCategory",
-      day: 10,
-      month: "Agosto"
+      category: this.categoryValue,
+      day: 15,
+      month: this.getMonth(parseInt(nowDate[1])),
+      year: parseInt(nowDate[2])
     }
     this.expenseService.saveExpense(expense).then(() => {
       console.log("Expense saved")

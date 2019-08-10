@@ -18,11 +18,8 @@
       </ion-item>
       <ion-item>
         <ion-label>Category</ion-label>
-        <ion-select interface="action-sheet">
-          <ion-select-option>Option 1</ion-select-option>
-          <ion-select-option>Option 2</ion-select-option>
-          <ion-select-option>Option 3</ion-select-option>
-          <ion-select-option>Option 4</ion-select-option>
+        <ion-select interface="action-sheet" [(ngModel)]="categoryValue">
+          <ion-select-option *ngFor="let category of categories">{{category}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-button (click)="saveExpense()">Guardar gasto</ion-button>

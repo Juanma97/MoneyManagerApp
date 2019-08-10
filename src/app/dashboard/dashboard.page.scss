@@ -70,3 +70,25 @@ ion-icon{
   height: 2px;
   background: gray;
 }
+
+
+.bottom-navigation{
+  width: 100%;
+  height: 55px;
+  background: green;
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+
+  display:grid;
+  grid-template-columns: 33% 33% 33%;
+
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ion-icon{
+    color: white;
+  }
+}
