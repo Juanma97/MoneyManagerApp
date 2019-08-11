@@ -46,7 +46,7 @@ ion-icon{
 
 .titles-expenses{
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 30% 30% 30% 10%;
 }
 
 .title{
@@ -56,8 +56,14 @@ ion-icon{
 
 .expense{
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 30% 30% 30% 10%;
   padding: 4px;
+  font-size: 15px;
+
+  ion-icon{
+    font-size: 15px;
+    color: red;
+  }
 }
 
 .inner-expense{

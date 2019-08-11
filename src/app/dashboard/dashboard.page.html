@@ -23,6 +23,7 @@
           <div class="inner-expense">{{expense.name}}</div>
           <div class="inner-expense">{{expense.category}}</div>
           <div class="inner-expense">{{expense.value}} €</div>
+          <div class="inner-expense" (click)="deleteExpense(expense)"><ion-icon name="trash"></ion-icon></div>
         </div>
         <div class="separator"></div>
       </div>

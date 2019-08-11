@@ -81,7 +81,7 @@ export class ExpenseFormPage {
       name: this.nameExpense,
       value: this.valueExpense,
       category: this.categoryValue,
-      day: 15,
+      day: parseInt(nowDate[0]),
       month: this.getMonth(parseInt(nowDate[1])),
       year: parseInt(nowDate[2])
     }

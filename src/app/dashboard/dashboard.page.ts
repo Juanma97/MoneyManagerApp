@@ -32,9 +32,22 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    console.log("ionViewWillEnter")
     this.storage.get("expensesSaved").then((val) => {
       this.allExpenses = val;
-      this.getTodayExpenses();
+      this.slides.getActiveIndex().then((val) => {
+      switch(val){
+        case 0: 
+          this.getTodayExpenses();
+          break;
+        case 1:
+          this.getMonthExpenses();
+          break;
+        case 2:
+          this.getYearExpenses();
+          break;
+      }
+    })
     });
   }
 
@@ -69,6 +82,13 @@ export class DashboardPage implements OnInit {
         this.expenses.push(value);
       }
     }
+  }
+
+  async deleteExpense(expense) {
+    await this.expenseService.deleteExpense(expense);
+    this.storage.get("expensesSaved").then((val) => {
+      this.ionViewWillEnter();
+    });
   }
 
   getMonth(month) {
