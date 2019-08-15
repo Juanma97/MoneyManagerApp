@@ -23,23 +23,25 @@
         <div class="title">Expense</div>
         <div class="title"><ion-icon name="trash" size="small"></ion-icon></div>
       </div>
-      <div class="foo" *ngFor="let expense of expenses">
-        <div class="expense">
-          <div class="inner-expense">{{expense.name}}</div>
-          <div class="inner-expense">{{expense.category}}</div>
-          <div class="inner-expense">{{expense.value}} €</div>
-          <div class="inner-expense" (click)="deleteExpense(expense)"><ion-icon name="close"></ion-icon></div>
+      <div class="expenses-scroll">
+        <div class="foo" *ngFor="let expense of expenses">
+          <div class="expense">
+            <div class="inner-expense">{{expense.name}}</div>
+            <div class="inner-expense">{{expense.category}}</div>
+            <div class="inner-expense">{{expense.value}} €</div>
+            <div class="inner-expense" (click)="deleteExpense(expense)"><ion-icon name="close"></ion-icon></div>
+          </div>
+          <div class="separator-container"><div class="separator"></div></div>
         </div>
-        <div class="separator-container"><div class="separator"></div></div>
       </div>
     </div>
   </div>
 
   <div class="bottom-navigation">
 
-    <div><ion-icon name="battery-charging" size="medium"></ion-icon></div>
-    <div><ion-icon name="add" size="large" (click)="goToExpenseForm()"></ion-icon></div>
-    <div><ion-icon name="school"></ion-icon></div>
+    <div><ion-icon name="battery-charging"></ion-icon></div>
+    <div><ion-icon name="add-circle" (click)="goToExpenseForm()"></ion-icon></div>
+    <div><ion-icon name="school" (click)="goToProfile()"></ion-icon></div>
  
   </div>
 </ion-content>

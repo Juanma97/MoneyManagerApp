@@ -169,4 +169,7 @@ export class DashboardPage implements OnInit {
   goToExpenseForm() {
     this.router.navigateByUrl('/expense-form');
   }
+  goToProfile() {
+    this.router.navigateByUrl('/profile');
+  }
 }
