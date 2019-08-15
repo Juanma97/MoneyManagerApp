@@ -1,6 +1,10 @@
 <ion-content>
   <div class="tab-salary">
-    <p>Tu sueldo: {{salary}}</p>
+    <div style="display: flex; align-items: center;">
+      <!-- <img src="../../assets/moneyManager-logo.png"/> -->
+      <p>Tu sueldo: {{salary}}</p>
+    </div>
+    <ion-icon name="create"></ion-icon>
   </div>
   <div class="main-content">
     <div class=slider-content>
@@ -17,24 +21,25 @@
         <div class="title">Name</div>
         <div class="title">Category</div>
         <div class="title">Expense</div>
+        <div class="title"><ion-icon name="trash" size="small"></ion-icon></div>
       </div>
-      <div *ngFor="let expense of expenses">
+      <div class="foo" *ngFor="let expense of expenses">
         <div class="expense">
           <div class="inner-expense">{{expense.name}}</div>
           <div class="inner-expense">{{expense.category}}</div>
           <div class="inner-expense">{{expense.value}} €</div>
-          <div class="inner-expense" (click)="deleteExpense(expense)"><ion-icon name="trash"></ion-icon></div>
+          <div class="inner-expense" (click)="deleteExpense(expense)"><ion-icon name="close"></ion-icon></div>
         </div>
-        <div class="separator"></div>
+        <div class="separator-container"><div class="separator"></div></div>
       </div>
     </div>
   </div>
 
   <div class="bottom-navigation">
 
-    <div>1</div>
+    <div><ion-icon name="battery-charging" size="medium"></ion-icon></div>
     <div><ion-icon name="add" size="large" (click)="goToExpenseForm()"></ion-icon></div>
-    <div>3</div>
+    <div><ion-icon name="school"></ion-icon></div>
  
   </div>
 </ion-content>

@@ -85,6 +85,7 @@ export class DashboardPage implements OnInit {
   }
 
   async deleteExpense(expense) {
+    console.log("DELETE EXPENSE")
     await this.expenseService.deleteExpense(expense);
     this.storage.get("expensesSaved").then((val) => {
       this.ionViewWillEnter();

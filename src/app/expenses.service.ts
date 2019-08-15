@@ -25,14 +25,23 @@ export class ExpensesService {
   deleteExpense(expense) {
     return this.getAllExpenses().then(result => {
       if (result) {
-        var index = result.indexOf(expense.name);
+        var index = -1;
+        for(var key in result){
+          if(this.compareExpenses(result[key], expense)){
+            index = parseInt(key)
+          }
+        }
         result.splice(index, 1);
-        console.log(result);
         return this.storage.set(STORAGE_KEY, result);
       }
     });
   }
 
+  compareExpenses(exp1, exp2){
+    return exp1.name == exp2.name && exp1.value == exp2.value &&
+            exp1.category == exp2.category && exp1.day == exp2.day &&
+            exp1.month == exp2.month && exp1.year == exp2.year;
+  }
   
   getAllExpenses() {
     return this.storage.get(STORAGE_KEY);
