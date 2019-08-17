@@ -6,10 +6,13 @@
     </div>
   </div>
   <div class="main-container">
-    <h2>Bienvenido a tu area personal</h2>
     <div class="container">
-      <div class="progress"></div>
-      <div>10% Gastado mes</div>
+      <div>Total gastado este mes: {{totalMonth}} €</div>
+      <ion-progress-bar value={{percentageMonthProgress}}></ion-progress-bar>
+      <div>{{percentageMonth}} % Gastado mes</div>
+      <div>Total gastado este año: {{totalYear}} €</div>
+      <ion-progress-bar value={{percentageYearProgress}}></ion-progress-bar>
+      <div>{{percentageYear}} % Gastado año</div>
     </div>
   </div>
 

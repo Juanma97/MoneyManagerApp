@@ -38,30 +38,19 @@ ion-icon{
   height: calc(100vh - 112px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding-top: 16px;
+
+  div{
+    padding: 8px;
+  }
 }
 
 .container{
   display: flex;
   flex-direction: column;
 }
-.progress {
-    width:100%;
-    height:10px;
-    border:1px solid #27ae60;
-    border-radius: 8px;
-    position:relative;
-}
-.progress:after {
-    content:'\A';
-    position:absolute;
-    background:#27ae60;
-    top:0; bottom:0;
-    left:0; 
-    width:20%;
-}
-
 
 .bottom-navigation{
   width: 100%;
