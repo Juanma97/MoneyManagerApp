@@ -24,6 +24,8 @@ export class ProfilePage {
   constructor(private router:Router, private storage:Storage) { }
 
   ionViewWillEnter(){
+    this.totalMonth = 0;
+    this.totalYear = 0;
     this.storage.get(STORAGE_KEY).then(result => {
       for(var key in result) {
         if(result[key].month == this.getMonth(parseInt(this.nowDate[1]))){

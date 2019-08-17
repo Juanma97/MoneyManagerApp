@@ -47,6 +47,33 @@ ion-icon{
   }
 }
 
+.title-tips{
+  font-size: 20px;
+  word-spacing: 20px;
+}
+hr {
+  height: 2px !important;
+  width: 80% !important;
+  background: gray !important;
+}
+.tips{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 50% 50%;
+  grid-gap: 8px;
+  width: 80%;
+  height: 50%;
+
+  .tip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.12), 0 5px 7px rgba(0,0,0,0.24);
+  }
+}
+
 .container{
   display: flex;
   flex-direction: column;
