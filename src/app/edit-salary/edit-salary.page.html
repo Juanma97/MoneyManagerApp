@@ -1,0 +1,16 @@
+<ion-content padding>
+  <ion-fab vertical="top" horizontal="start" (click)="dismissModal()">
+      <ion-icon name="close" size="large"></ion-icon>
+  </ion-fab>
+  <div class="content">
+    <div class="main-form">
+      <h2>Hola, de nuevo!</h2>
+      <p>¿Cuál es tu nuevo salario?</p>
+      <ion-item>
+        <ion-label position="floating">Salario</ion-label>
+        <ion-input [(ngModel)]="salaryValue" autofocus type="number" clearInput></ion-input>
+      </ion-item>
+      <ion-button (click)="saveSalary()">Guardar</ion-button>
+    </div>
+  </div>
+</ion-content>

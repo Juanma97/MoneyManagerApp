@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ExpensesService } from '../expenses.service';
+import { EditSalaryPage } from '../edit-salary/edit-salary.page';
 
 import * as moment from 'moment';
 
@@ -21,18 +22,16 @@ export class DashboardPage implements OnInit {
   indexSlide:number = 0;
 
   constructor(private storage:Storage, private cdRef:ChangeDetectorRef, private router: Router,
-              public expenseService:ExpensesService) { }
+              public expenseService:ExpensesService, public modalController: ModalController) { }
 
   ngOnInit() {
     this.storage.get('salary').then((val) => {
       this.salary = val;
       this.cdRef.detectChanges();
     });
-    
   }
 
   ionViewWillEnter() {
-    console.log("ionViewWillEnter")
     this.storage.get("expensesSaved").then((val) => {
       this.allExpenses = val;
       this.slides.getActiveIndex().then((val) => {
@@ -85,7 +84,6 @@ export class DashboardPage implements OnInit {
   }
 
   async deleteExpense(expense) {
-    console.log("DELETE EXPENSE")
     await this.expenseService.deleteExpense(expense);
     this.storage.get("expensesSaved").then((val) => {
       this.ionViewWillEnter();
@@ -174,5 +172,17 @@ export class DashboardPage implements OnInit {
   }
   goToSaveMoney(){
     this.router.navigateByUrl('/save-money');
+  }
+  async editSalary() {
+    const modal = await this.modalController.create({
+      component: EditSalaryPage
+    });
+    modal.onDidDismiss().then(() => {
+      this.storage.get('salary').then((val) => {
+        this.salary = val;
+        this.cdRef.detectChanges();
+      });
+    })
+    return await modal.present();
   }
 }

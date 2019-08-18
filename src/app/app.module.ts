@@ -11,12 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { ExpensesService } from './expenses.service';
+import { EditSalaryPage } from './edit-salary/edit-salary.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, EditSalaryPage],
+  entryComponents: [EditSalaryPage],
+  exports: [EditSalaryPage],
   imports: [
-    BrowserModule, 
+    FormsModule,
+  BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot({

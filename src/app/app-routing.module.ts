@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'expense-form', loadChildren: './expense-form/expense-form.module#ExpenseFormPageModule' },
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'save-money', loadChildren: './save-money/save-money.module#SaveMoneyPageModule' },
+  { path: 'edit-salary', loadChildren: './edit-salary/edit-salary.module#EditSalaryPageModule' },
 ];
 
 @NgModule({
