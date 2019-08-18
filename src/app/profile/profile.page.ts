@@ -40,8 +40,6 @@ export class ProfilePage {
         this.percentageMonth = Math.round((this.totalMonth / val) * 100);
         this.percentageMonthProgress = (this.percentageMonth / 100).toString();
         this.percentageYearProgress = (this.percentageYear / 100).toString();
-        console.log("pc year: ", this.percentageYearProgress);
-        console.log("pc month: ", this.percentageMonthProgress);
       })
     })
   }
@@ -92,7 +90,9 @@ export class ProfilePage {
   goToProfile() {
     this.router.navigateByUrl('/profile');
   }
-
+  goToSaveMoney() {
+    this.router.navigateByUrl('/save-money');
+  }
   back(){
     this.router.navigateByUrl('/dashboard');
   }

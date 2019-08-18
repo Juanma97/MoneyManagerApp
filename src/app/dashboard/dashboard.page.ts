@@ -172,4 +172,7 @@ export class DashboardPage implements OnInit {
   goToProfile() {
     this.router.navigateByUrl('/profile');
   }
+  goToSaveMoney(){
+    this.router.navigateByUrl('/save-money');
+  }
 }

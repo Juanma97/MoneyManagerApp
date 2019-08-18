@@ -1,9 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>save-money</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="tab-salary">
+    <div style="display: flex; align-items: center;">
+      <ion-icon name="arrow-back" (click)="back()"></ion-icon>
+      <p>Area del ahorro</p>
+    </div>
+  </div>
 
+  <div class="main-container">
+    <div class="container">
+      <div class="title">Total ahorrado este mes</div>
+      <div class="subtitle">{{totalMonth}} €</div>
+      <div class="title">Total ahorrado este año</div>
+      <div class="subtitle">{{totalYear}} €</div>
+    </div>
+  </div>
+
+  <div class="bottom-navigation">
+
+    <div><ion-icon name="battery-charging" (click)="goToSaveMoney()"></ion-icon></div>
+    <div><ion-icon name="add-circle" (click)="goToExpenseForm()"></ion-icon></div>
+    <div><ion-icon name="school" (click)="goToProfile()"></ion-icon></div>
+ 
+  </div>
 </ion-content>
