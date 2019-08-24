@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 import * as moment from 'moment';
+import { CategoryService } from '../category.service';
 
 const STORAGE_KEY = "expensesSaved"
 
@@ -13,20 +14,27 @@ const STORAGE_KEY = "expensesSaved"
 })
 export class ProfilePage {
 
+  categoriesMap: Object[] = [];
+
   totalYear:number = 0;
   totalMonth:number = 0;
   percentageYear:number = 0;
   percentageMonth:number = 0;
+  categories:any = null;
+  allExpenses:any = null;
   percentageYearProgress: string = "0";
   percentageMonthProgress: string = "0";
   nowDate = moment().format("DD/MM/YYYY").split("/");
 
-  constructor(private router:Router, private storage:Storage) { }
+  constructor(private router:Router, private storage:Storage, private categoryService:CategoryService) { }
 
   ionViewWillEnter(){
+    this.categoriesMap = [];
     this.totalMonth = 0;
     this.totalYear = 0;
     this.storage.get(STORAGE_KEY).then(result => {
+      this.allExpenses = result;
+      this.categories = this.getCategories();
       for(var key in result) {
         if(result[key].month == this.getMonth(parseInt(this.nowDate[1]))){
           this.totalMonth += parseInt(result[key].value);
@@ -42,6 +50,20 @@ export class ProfilePage {
         this.percentageYearProgress = (this.percentageYear / 100).toString();
       })
     })
+  }
+
+  getCategories() {
+    var count:number = 0;
+    var categories = this.categoryService.getCategoriesDefault();
+    for(var cat in categories){
+      count = 0;
+      for(var exp in this.allExpenses){
+        if(this.allExpenses[exp].category == categories[cat]){
+          count += parseInt(this.allExpenses[exp].value);
+        }
+      }
+      this.categoriesMap.push({category:categories[cat], value:count});
+    }
   }
 
   getMonth(month) {

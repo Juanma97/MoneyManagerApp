@@ -8,6 +8,8 @@ const STORAGE_KEY = "category";
 })
 export class CategoryService {
 
+  categories:any = ['Compra', 'Comida', 'Transporte', 'Hogar', 'Ropa', 'Ahorro', 'Inversiones', 'Otros'];
+
   constructor(private storage:Storage) { }
 
   saveCategory(category){
@@ -23,5 +25,9 @@ export class CategoryService {
 
   getAllCategories(){
     return this.storage.get(STORAGE_KEY);
+  }
+
+  getCategoriesDefault() {
+    return this.categories;
   }
 }
