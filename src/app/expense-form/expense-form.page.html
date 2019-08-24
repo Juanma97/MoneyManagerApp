@@ -12,16 +12,19 @@
         <ion-label position="floating">Name</ion-label>
         <ion-input autofocus clearInput [(ngModel)]="nameExpense"></ion-input>
       </ion-item>
+      <p class="error-msg" *ngIf="errorName">Debe introducir un nombre</p>
       <ion-item>
         <ion-label position="floating">Expense</ion-label>
-        <ion-input clearInput [(ngModel)]="valueExpense"></ion-input>
+        <ion-input clearInput [(ngModel)]="valueExpense" type="number"></ion-input>
       </ion-item>
+      <p class="error-msg" *ngIf="errorExpense">El valor debe ser mayor que 0</p>
       <ion-item>
         <ion-label>Category</ion-label>
         <ion-select interface="action-sheet" [(ngModel)]="categoryValue">
           <ion-select-option *ngFor="let category of categories">{{category}}</ion-select-option>
         </ion-select>
       </ion-item>
+      <p class="error-msg" *ngIf="errorCategory">Debe seleccionar alguna categoría</p>
       <ion-button (click)="saveExpense()">Guardar gasto</ion-button>
     </div>
   </div>

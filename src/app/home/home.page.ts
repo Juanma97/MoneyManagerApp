@@ -9,14 +9,20 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  salaryValue:number;
+  salaryValue:number = 0;
+  errorSalary:boolean = false;
 
   constructor(private storage:Storage, private router: Router) {}
 
   saveSalary() {
-    this.storage.set('salary', this.salaryValue).then(() => {
-      this.router.navigateByUrl('/dashboard');
-    })
+    this.errorSalary = false;
+    if(this.salaryValue > 0){
+      this.storage.set('salary', this.salaryValue).then(() => {
+        this.router.navigateByUrl('/dashboard');
+      })
+    }else{
+      this.errorSalary = true;
+    }
     
   }
 }

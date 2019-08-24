@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage';
 })
 export class EditSalaryPage implements OnInit {
 
-  salaryValue:number;
+  salaryValue:number = 0;
+  errorSalary:boolean = false;
 
   constructor(public modalCtrl: ModalController, private storage:Storage) { }
 
@@ -17,9 +18,14 @@ export class EditSalaryPage implements OnInit {
   }
 
   saveSalary() {
-    this.storage.set('salary', this.salaryValue).then(() => {
-      this.dismissModal();
-    })
+    this.errorSalary = false;
+    if(this.salaryValue > 0) {
+      this.storage.set('salary', this.salaryValue).then(() => {
+        this.dismissModal();
+      })
+    }else{
+      this.errorSalary = true;
+    }
   }
 
   dismissModal() {

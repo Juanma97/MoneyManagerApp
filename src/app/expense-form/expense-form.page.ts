@@ -16,6 +16,9 @@ export class ExpenseFormPage {
   title:string = "";
   nameExpense:string = "";
   valueExpense:number = 0;
+  errorExpense:boolean = false;
+  errorName:boolean = false;
+  errorCategory:boolean = false;
   categoryValue:any = null;
   categories:any = ['Compra', 'Comida', 'Transporte', 'Hogar', 'Ropa', 'Ahorro', 'Inversiones', 'Otros'];
 
@@ -75,20 +78,34 @@ export class ExpenseFormPage {
   }
 
   saveExpense() {
+    this.errorCategory = false;
+    this.errorExpense = false;
+    this.errorName = false;
     var nowDate = moment().format("DD/MM/YYYY").split("/")
     console.log("Save expense");
-    var expense = {
-      name: this.nameExpense,
-      value: this.valueExpense,
-      category: this.categoryValue,
-      day: parseInt(nowDate[0]),
-      month: this.getMonth(parseInt(nowDate[1])),
-      year: parseInt(nowDate[2])
+    if(this.valueExpense > 0 && this.nameExpense != '' && this.categoryValue != ''){
+      var expense = {
+        name: this.nameExpense,
+        value: this.valueExpense,
+        category: this.categoryValue,
+        day: parseInt(nowDate[0]),
+        month: this.getMonth(parseInt(nowDate[1])),
+        year: parseInt(nowDate[2])
+      }
+      this.expenseService.saveExpense(expense).then(() => {
+        console.log("Expense saved")
+        this.router.navigateByUrl('/dashboard');
+      })
     }
-    this.expenseService.saveExpense(expense).then(() => {
-      console.log("Expense saved")
-      this.router.navigateByUrl('/dashboard');
-    })
+    if(this.valueExpense <= 0){
+      this.errorExpense = true;
+    }
+    if(this.nameExpense == ''){
+      this.errorName = true;
+    }
+    if(this.categoryValue == null){
+      this.errorCategory = true;
+    }
   }
 
 }
