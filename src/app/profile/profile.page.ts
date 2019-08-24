@@ -58,13 +58,13 @@ export class ProfilePage {
     for(var cat in categories){
       count = 0;
       for(var exp in this.allExpenses){
-        if(this.allExpenses[exp].category == categories[cat]){
+        if(this.allExpenses[exp].category == categories[cat] && 
+          this.allExpenses[exp].month == this.getMonth(parseInt(this.nowDate[1])))
           count += parseInt(this.allExpenses[exp].value);
         }
       }
       this.categoriesMap.push({category:categories[cat], value:count});
     }
-  }
 
   getMonth(month) {
     switch(month){

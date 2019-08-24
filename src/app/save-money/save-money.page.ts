@@ -37,11 +37,6 @@ export class SaveMoneyPage implements OnInit {
           this.totalYear += parseInt(result[key].value);
         }
       }
-
-      //this.totalMonth = Math.round(this.totalMonth);
-      //this.totalYear = Math.round(this.totalYear);
-      console.log("Month: ", this.totalMonth)
-      console.log("Month: ", this.totalYear)
     })
   }
 
@@ -85,19 +80,16 @@ export class SaveMoneyPage implements OnInit {
     }
   }
 
+  goToExpenseForm() {
+    this.router.navigateByUrl('/expense-form');
+  }
+  goToProfile() {
+    this.router.navigateByUrl('/profile');
+  }
+  goToSaveMoney() {
+    this.router.navigateByUrl('/save-money');
+  }
   back(){
     this.router.navigateByUrl('/dashboard');
-  }
-
-  goToSaveMoney() {
-
-  }
-
-  goToExpenseForm() {
-
-  }
-
-  goToProfile() {
-
   }
 }
