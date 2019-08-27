@@ -20,58 +20,19 @@ export class ExpenseFormPage {
   errorName:boolean = false;
   errorCategory:boolean = false;
   categoryValue:any = null;
-  categories:any = ['Compra', 'Comida', 'Transporte', 'Hogar', 'Ropa', 'Ahorro', 'Inversiones', 'Otros'];
+  months:any = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  categories:any;
 
-  constructor(private router:Router, public expenseService:ExpensesService, public categoryService:CategoryService,
-              private storage:Storage) {
+  constructor(private router:Router, 
+              private expenseService:ExpensesService, 
+              private categoryService:CategoryService) {
+    this.categories = categoryService.getCategoriesDefault();
+    console.log(this.categories)
     var date = moment().format("DD/MM/YYYY").split("/")
     this.title = "Gasto del día " + date[0] + " de " + this.getMonth(parseInt(date[1])) + " del " + date[2];
   }
 
-  addNewCategory(){
-    console.log("Add new category");
-  }
-
- /** TODO: Change to array of months and return the position - 1 */
-  getMonth(month) {
-    switch(month){
-      case 1:
-        return "Enero";
-        break;
-      case 2: 
-        return "Febrero";
-        break;
-      case 3: 
-        return "Marzo";
-        break;
-      case 4:
-        return "Abril";
-        break;
-      case 5: 
-        return "Mayo";
-        break;
-      case 6:
-        return "Junio";
-        break;
-      case 7:
-        return "Julio";
-        break;
-      case 8:
-        return "Agosto";
-        break;
-      case 9:
-        return "Septiembre";
-        break;
-      case 10: 
-        return "Octubre";
-        break;
-      case 11: 
-        return "Noviembre";
-      case 12: 
-        return "December";
-        break;
-    }
-  }
+  getMonth(month) {return this.months[month - 1]}
 
   closeForm() {
     this.router.navigateByUrl('/dashboard');
@@ -82,7 +43,6 @@ export class ExpenseFormPage {
     this.errorExpense = false;
     this.errorName = false;
     var nowDate = moment().format("DD/MM/YYYY").split("/")
-    console.log("Save expense");
     if(this.valueExpense > 0 && this.nameExpense != '' && this.categoryValue != ''){
       var expense = {
         name: this.nameExpense,
@@ -93,7 +53,6 @@ export class ExpenseFormPage {
         year: parseInt(nowDate[2])
       }
       this.expenseService.saveExpense(expense).then(() => {
-        console.log("Expense saved")
         this.router.navigateByUrl('/dashboard');
       })
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
@@ -7,18 +7,14 @@ import { Storage } from '@ionic/storage';
   templateUrl: './edit-salary.page.html',
   styleUrls: ['./edit-salary.page.scss'],
 })
-export class EditSalaryPage implements OnInit {
+export class EditSalaryPage {
 
   salaryValue:number = 0;
   errorSalary:boolean = false;
 
   constructor(public modalCtrl: ModalController, private storage:Storage) { }
 
-  ngOnInit() {
-  }
-
   saveSalary() {
-    this.errorSalary = false;
     if(this.salaryValue > 0) {
       this.storage.set('salary', this.salaryValue).then(() => {
         this.dismissModal();

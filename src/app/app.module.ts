@@ -13,25 +13,30 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ExpensesService } from './expenses.service';
 import { EditSalaryPage } from './edit-salary/edit-salary.page';
 import { FormsModule } from '@angular/forms';
+import { FirsTimeService } from './firs-time.service';
+import { FirstTimeGuard } from './first-time.guard';
 
 @NgModule({
   declarations: [AppComponent, EditSalaryPage],
   entryComponents: [EditSalaryPage],
-  exports: [EditSalaryPage],
+  exports: [],
   imports: [
-    FormsModule,
+FormsModule,
   BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot({
       name: '__mydb',
 driverOrder: ['indexeddb', 'sqlite', 'websql']
-    })
+    }),
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ExpensesService,
+    FirsTimeService,
+    FirstTimeGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
