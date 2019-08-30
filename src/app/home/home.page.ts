@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,19 @@ import { Router } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage{
 
   salaryValue:number = 0;
   errorSalary:boolean = false;
 
   constructor(private storage:Storage, private router: Router) {}
+
+  ionViewWillEnter(){
+    this.storage.get('salary').then((val) => {
+      console.log("entro ", val)
+      if(val != null) this.router.navigateByUrl('/dashboard');
+    });
+  }
 
   saveSalary() {
     if(this.salaryValue > 0){

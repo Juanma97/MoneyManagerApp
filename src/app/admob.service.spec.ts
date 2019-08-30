@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FirsTimeService } from './firs-time.service';
+import { AdmobService } from './admob.service';
 
-describe('FirsTimeService', () => {
+describe('AdmobService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FirsTimeService = TestBed.get(FirsTimeService);
+    const service: AdmobService = TestBed.get(AdmobService);
     expect(service).toBeTruthy();
   });
 });

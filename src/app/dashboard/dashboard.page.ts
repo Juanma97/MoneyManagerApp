@@ -4,8 +4,8 @@ import { IonSlides, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ExpensesService } from '../expenses.service';
 import { EditSalaryPage } from '../edit-salary/edit-salary.page';
-
 import * as moment from 'moment';
+import { AdmobService } from '../admob.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +22,8 @@ export class DashboardPage implements OnInit {
   indexSlide:number = 0;
 
   constructor(private storage:Storage, private cdRef:ChangeDetectorRef, private router: Router,
-              public expenseService:ExpensesService, public modalController: ModalController) { }
+              public expenseService:ExpensesService, public modalController: ModalController,
+              private admobService: AdmobService) { }
 
   ngOnInit() {
     this.storage.get('salary').then((val) => {
@@ -165,6 +166,7 @@ export class DashboardPage implements OnInit {
   }
 
   goToExpenseForm() {
+    this.admobService.InterstitialAd();
     this.router.navigateByUrl('/expense-form');
   }
   goToProfile() {

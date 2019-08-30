@@ -13,8 +13,10 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ExpensesService } from './expenses.service';
 import { EditSalaryPage } from './edit-salary/edit-salary.page';
 import { FormsModule } from '@angular/forms';
-import { FirsTimeService } from './firs-time.service';
-import { FirstTimeGuard } from './first-time.guard';
+
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { AdmobService } from './admob.service';
+
 
 @NgModule({
   declarations: [AppComponent, EditSalaryPage],
@@ -35,8 +37,8 @@ driverOrder: ['indexeddb', 'sqlite', 'websql']
     StatusBar,
     SplashScreen,
     ExpensesService,
-    FirsTimeService,
-    FirstTimeGuard,
+    AdMobFree,
+    AdmobService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
