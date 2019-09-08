@@ -13,7 +13,7 @@ import { Platform } from '@ionic/angular';
 export class AdmobService {
 
   interstitialConfig: AdMobFreeInterstitialConfig = {
-    isTesting: true,
+    isTesting: false,
     autoShow: false,
     id: "ca-app-pub-3535087308150372/8993564329"
   };
@@ -31,7 +31,6 @@ export class AdmobService {
     this.admobFree.on('admob.interstitial.events.CLOSE').subscribe(() => {
       this.admobFree.interstitial.prepare()
         .then(() => {
-          alert("Interstitial CLOSE");
         }).catch(e => alert(e));
     });
    }
@@ -40,14 +39,14 @@ export class AdmobService {
     this.admobFree.interstitial.isReady().then(() => {
       this.admobFree.interstitial.show().then(() => {
       })
-        .catch(e => alert("show " + e));
+        .catch();
     })
-      .catch(e => alert("isReady " + e));
+      .catch();
   }
 
   BannerAd() {
     let bannerConfig: AdMobFreeBannerConfig = {
-      isTesting: true,
+      isTesting: false,
       autoShow: false,
       id: "ca-app-pub-3535087308150372/9173086785"
     };

@@ -19,7 +19,7 @@ import { AdmobService } from './admob.service';
 
 
 @NgModule({
-  declarations: [AppComponent, EditSalaryPage],
+  declarations: [AppComponent],
   entryComponents: [EditSalaryPage],
   exports: [],
   imports: [

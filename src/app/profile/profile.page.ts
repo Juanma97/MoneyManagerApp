@@ -20,6 +20,7 @@ export class ProfilePage {
   totalMonth:number = 0;
   percentageYear:number = 0;
   percentageMonth:number = 0;
+  totalSalary:number = 0;
   categories:any = null;
   allExpenses:any = null;
   percentageYearProgress: string = "0";
@@ -32,6 +33,9 @@ export class ProfilePage {
     private categoryService:CategoryService) { }
 
   ionViewWillEnter(){
+    this.storage.get('salary').then(res => {
+      this.totalSalary = res;
+    })
     this.categoriesMap = [];
     this.totalMonth = 0;
     this.totalYear = 0;
